@@ -18,10 +18,12 @@ namespace Jean_Luc_Picard_s_journal
                     Console.Write("Enter text");
                     Console.WriteLine("");
                     string input = Console.ReadLine();
-                    StreamWriter writer;
-                    writer = new StreamWriter("test.txt");
-                    writer.WriteLine(input);
-                    writer.Close();
+                    string docPath =Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    using (StreamWriter outputFile = new StreamWriter(Path.Combine(docPath, DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss")+".txt"), true))
+                    {
+                        outputFile.WriteLine(input);
+                    }
+                    
 
                 }
 
